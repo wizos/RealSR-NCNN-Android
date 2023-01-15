@@ -1,0 +1,56 @@
+name: Compile RealSR-NCNN-Android-GUI
+
+on:
+  repository_dispatch:
+  workflow_dispatch:
+env:
+  CI_NAME: Custom CI
+  
+  ASSETS_URL: https://github.com/tumuyan/RealSR-NCNN-Android/releases/download/1.7.13-1/assets.zip
+  NCNN_URL: https://github.com/Tencent/ncnn/releases/download/20221128/ncnn-20221128-android-vulkan-shared.zip
+  NCNN_NAME: ncnn-20221128-android-vulkan-shared.zip
+  
+  
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+    - name: Checkout last commit
+      uses: actions/checkout@v3
+      with:
+        fetch-depth: 0
+
+    - name: Download NCNN and Assets
+      run: |
+        echo $GITHUB_WORKSPACE
+        pwd
+        wget $NCNN_URL
+        unzip $NCNN_NAME -d $REPO_BRANCH/3rdparty/ncnn-android-vulkan-shared
+        wget $ASSETS_URL
+        unzip assets.zip -d $REPO_BRANCH/RealSR-NCNN-Android-GUI/app/src/main/assets
+        
+
+    - name: Setup Java
+      uses: actions/setup-java@v3
+      with:
+        distribution: "temurin"
+        java-version: 17
+        cache: 'gradle'
+
+
+    - name: Setup Android SDK
+      uses: android-actions/setup-android@v2
+
+
+    - name: Build Trime
+      run: |
+        cd RealSR-NCNN-Android-GUI
+        make debug
+
+    - name: Upload Trime artifact
+      uses: actions/upload-artifact@v3
+      with:
+        name: my_trime.zip
+        path: RealSR-NCNN-Android-GUI/app/build/outputs/apk/**/*.apk
+        # keep 90 days
+        retention-days: 90
