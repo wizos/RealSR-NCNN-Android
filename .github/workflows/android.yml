@@ -25,11 +25,11 @@ jobs:
         echo $GITHUB_WORKSPACE
         pwd
         wget $ASSETS_URL
-        unzip assets.zip -d $REPO_BRANCH/RealSR-NCNN-Android-GUI/app/src/main/assets
         wget $NCNN_URL
         mkdir -p 3rdparty
         ls
-        unzip $NCNN_NAME -d $REPO_BRANCH/3rdparty/ncnn-android-vulkan-shared
+        unzip  -o  assets.zip -d $REPO_BRANCH/RealSR-NCNN-Android-GUI/app/src/main/assets
+        unzip  -o  $NCNN_NAME -d $REPO_BRANCH/3rdparty/ncnn-android-vulkan-shared
         
 
     - name: Setup Java
