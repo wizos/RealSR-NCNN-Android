@@ -25,7 +25,7 @@ jobs:
         echo $GITHUB_WORKSPACE
         pwd
         wget $NCNN_URL
-        mkdir 3rdparty
+        mkdir -p 3rdparty
         unzip $NCNN_NAME -d $REPO_BRANCH/3rdparty/ncnn-android-vulkan-shared
         wget $ASSETS_URL
         unzip assets.zip -d $REPO_BRANCH/RealSR-NCNN-Android-GUI/app/src/main/assets
