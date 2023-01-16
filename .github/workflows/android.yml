@@ -46,7 +46,7 @@ jobs:
 
     - name: Build Trime
       run: |
-        cd RealSR-NCNN-Android-GUI && ./gradlew assembleDebug
+        cd RealSR-NCNN-Android-GUI && chmod +x gradlew && ./gradlew assembleDebug
 
     - name: Upload Trime artifact
       uses: actions/upload-artifact@v3
