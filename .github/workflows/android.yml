@@ -44,14 +44,14 @@ jobs:
       uses: android-actions/setup-android@v2
 
 
-    - name: Build Trime
+    - name: Build Gui
       run: |
         cd RealSR-NCNN-Android-GUI && chmod +x gradlew && ./gradlew assembleDebug
 
-    - name: Upload Trime artifact
+    - name: Upload Apk artifact
       uses: actions/upload-artifact@v3
       with:
-        name: my_trime.zip
+        name: RealSR-NCNN-Android-GUI.zip
         path: RealSR-NCNN-Android-GUI/app/build/outputs/apk/**/*.apk
         # keep 90 days
         retention-days: 90
