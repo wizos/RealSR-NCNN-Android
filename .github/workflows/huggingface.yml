@@ -14,22 +14,22 @@ jobs:
         run: |
           git clone https://huggingface.co/spaces/tumuyan/RealSR
           
-      - name: 安装 Python 3.7
+      - name: install Python 3.7
         uses: actions/setup-python@v1
         with:
           python-version: 3.7
 
-      - name: 安装模块
+      - name: install requirements
         run: |
           pip install -r ./RealSR/requirements.txt
           
-      - name: 下载文件
+      - name: download files
         run: python -c 'import RealSR.utils as u; u.dlFile(False, "./RealSR/")'
           
-      - name: 列出文件
+      - name: list files
         run: tree
         
       - name: Push to hub
         env:
           HF_TOKEN: ${{ secrets.HF_TOKEN }}
-        run: cd RealSR && git push https://tumuyan:$HF_TOKEN@huggingface.co/spaces/tumuyan/RealSR
+        run: cd RealSR && git add . && git status -s && git commit -m 'github ci' && git push https://tumuyan:$HF_TOKEN@huggingface.co/spaces/tumuyan/RealSR
