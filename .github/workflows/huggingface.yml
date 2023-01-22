@@ -26,7 +26,7 @@ jobs:
       - name: 下载文件
         run: python -c 'import RealSR.utils as u; u.dlFile(False, "./RealSR/")'
           
-      - name: 运行
+      - name: 列出文件
         run: tree
         
       - name: Push to hub
@@ -34,4 +34,4 @@ jobs:
           HF_TOKEN: ${{ secrets.HF_TOKEN }}
         run: |
           git clone https://huggingface.co/spaces/tumuyan/RealSR
-          git push https://RealSR:$tumuyan@huggingface.co/spaces/tumuyan/RealSR
+          git push https://tumuyan:$HF_TOKEN@huggingface.co/spaces/tumuyan/RealSR
