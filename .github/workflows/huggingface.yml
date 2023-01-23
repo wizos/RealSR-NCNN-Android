@@ -2,7 +2,15 @@ name: Sync Hugging Face hub
 on:
   repository_dispatch:
   workflow_dispatch:
-
+    inputs:
+      upload:
+        description: 'Upload'
+        required: false
+        default: yes
+        type: choice
+        options:
+          - 'yes'
+          - 'no'
 jobs:
   sync-to-hub:
     runs-on: ubuntu-latest
@@ -30,6 +38,7 @@ jobs:
         run: tree
         
       - name: Push to hub
+        if: (github.event.inputs.upload == 'yes')
         env:
           HF_TOKEN: ${{ secrets.HF_TOKEN }}
         run: |
