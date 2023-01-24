@@ -18,15 +18,19 @@ jobs:
   sync-to-hub:
     runs-on: ubuntu-latest
     steps:
-#       - name: Clone from hub
-#         run: |
-#           git clone https://huggingface.co/spaces/tumuyan/RealSR
+      - name: Print GLIBC_
+        run: |
+          strings /lib/x86_64-linux-gnu/libm.so.6 | grep GLIBC_
           
-      - name: Install Python 3.7
-        uses: actions/setup-python@v1
+      - name: Upload artifact
+        uses: actions/upload-artifact@v3
         with:
-          python-version: 3.7
-
+          name: libm_ubuntu-latest.zip
+          path: /lib/x86_64-linux-gnu/libm
+          # keep 90 days
+          retention-days: 90
+          
+          
       - name: Download glibc
         run: |
           wget http://mirrors.nju.edu.cn/gnu/libc/$GLIBC.tar.xz
