@@ -18,10 +18,9 @@ This repository contains 7 project:
 
 ### Web UI
 The hugging face repository contains the model and executable file for Windows/Linux platform, you can clone the repository and open a web UI in the python (instead of the original command line program)
+https://huggingface.co/spaces/tumuyan/RealSR  
 
-https://huggingface.co/spaces/tumuyan/RealSR
-你也可以在线体验docker版本（由于使用双核CPU运算，速度相当慢）
-Also you could try online demo! [![Hugging Face](https://img.shields.io/badge/Demo-%F0%9F%A4%97%20Hugging%20Face-blue)](https://huggingface.co/spaces/tumuyan/realsr-docker)
+Also you could try online demo! [![Hugging Face](https://img.shields.io/badge/Demo-%F0%9F%A4%97%20Hugging%20Face-blue)](https://huggingface.co/spaces/tumuyan/realsr-docker) But it is really slow cause of it running on a 2 core server.
 
 
 ### About Real-ESRGAN

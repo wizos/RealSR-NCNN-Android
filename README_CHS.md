@@ -20,11 +20,10 @@
 ### 下载地址 
 [酷安](https://www.coolapk.com/apk/292197) 或 [Github Release](https://github.com/tumuyan/RealSR-NCNN-Android/releases)  
 
-### Web UI
-如下仓库集成了Windows和Linux平台下的ncnn版本超分程序，可以clone仓库，在python环境下打开一个web UI来使用（代替原版程序的命令行方式）
-https://huggingface.co/spaces/tumuyan/RealSR
-你也可以在线体验docker版本（由于使用双核CPU运算，速度相当慢）
-https://huggingface.co/spaces/tumuyan/realsr-docker
+### 网页程序
+如下仓库存放了Android版本的cli程序，也集成了Windows和Linux平台下的ncnn x86版本超分程序，可以clone仓库后，在python环境下打开一个web UI来使用（代替原版程序的命令行方式）
+https://huggingface.co/spaces/tumuyan/RealSR  
+你也可以在线体验docker版本[![Hugging Face](https://img.shields.io/badge/Demo-%F0%9F%A4%97%20Hugging%20Face-blue)](https://huggingface.co/spaces/tumuyan/realsr-docker) （由于使用双核CPU运算，速度相当慢）
 
 ### 仓库结构
 1. RealSR-NCNN-Android-GUI 可以编译出APK文件，这样用户可以在图形环境下操作。（不过他的本质就是在给命令行程序套壳，而不是通过JNI调用库文件）
